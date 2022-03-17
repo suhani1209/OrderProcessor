@@ -1,0 +1,41 @@
+package com.orderApp.model.dao.order;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import com.orderApp.model.dao.product.Product;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@NoArgsConstructor
+@Table(name="order_table")
+public class Order {
+	
+	private Integer orderId;
+	private String status;
+	private LocalDateTime ordered_on;
+	
+	@ManyToMany(targetEntity=Product.class, cascade={CascadeType.ALL})
+    @JoinTable(name="ORDER_PRODUCTS", 
+            joinColumns=   { @JoinColumn(name="orderId") },
+            inverseJoinColumns= { @JoinColumn(name="productId")} )
+	List<Product> products;
+
+	public Order(String status, LocalDateTime ordered_on, List<Product> products) {
+		this.status = "NEW";
+		this.ordered_on = LocalDateTime.now();
+		this.products = products;
+	}
+	
+	
+}

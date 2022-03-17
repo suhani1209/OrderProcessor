@@ -1,0 +1,28 @@
+package com.orderApp.web.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.orderApp.model.dao.order.Order;
+import com.orderApp.model.service.OrderService;
+
+@Controller
+public class OrderCrudController {
+	
+	
+	private OrderService orderService;
+	@Autowired
+	public OrderCrudController(OrderService orderService)
+	{
+		this.orderService=orderService;
+	}
+	
+	@GetMapping(path="/")
+	public List<Order> getAllOrders(){
+		return orderService.getAllOrders();
+	}
+	
+}

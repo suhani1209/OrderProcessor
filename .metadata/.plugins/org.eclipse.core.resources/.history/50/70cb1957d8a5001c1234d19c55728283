@@ -1,0 +1,5 @@
+package com.orderApp.model.service;
+
+public class ProductServiceImpl {
+
+}

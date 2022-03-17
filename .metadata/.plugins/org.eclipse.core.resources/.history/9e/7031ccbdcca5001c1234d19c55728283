@@ -1,0 +1,5 @@
+package com.orderApp.model.dto;
+
+public class OrderDto {
+
+}

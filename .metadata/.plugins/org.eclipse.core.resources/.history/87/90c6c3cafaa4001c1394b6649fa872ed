@@ -1,0 +1,5 @@
+package com.orderApp.model.user;
+
+public interface UserDao {
+
+}

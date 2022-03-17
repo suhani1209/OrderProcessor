@@ -1,0 +1,47 @@
+package com.orderApp.web.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.orderApp.model.dao.order.Order;
+import com.orderApp.model.service.OrderService;
+
+@Controller
+public class OrderCrudController {
+	
+	
+	private OrderService orderService;
+	@Autowired
+	public OrderCrudController(OrderService orderService)
+	{
+		this.orderService=orderService;
+	}
+	//home page
+	@GetMapping(path="/")
+	public String home() {
+		return "home";
+	}
+	// view all orders
+	@GetMapping(path="orders1")
+	public ModelAndView getAllOrders(ModelAndView mv){
+		mv.setViewName("allorders");
+		List<Order>orders=orderService.getAllOrders();
+		mv.addObject("orders", orders);
+		return mv;
+	}
+	
+	@GetMapping(path="orders/{id}")
+	public String deleteOrder(@PathVariable(name = "id")  Integer id) {
+		orderService.deleteOrder(id);
+		return "redirect:../orders1";
+	}
+	
+	
+	
+}

@@ -1,0 +1,5 @@
+package com.orderApp.model.dao.product;
+
+public class ProductDao {
+
+}
