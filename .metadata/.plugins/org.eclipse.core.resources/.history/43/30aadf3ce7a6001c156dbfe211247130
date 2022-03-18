@@ -1,0 +1,20 @@
+package com.orderApp.model.dao.order;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+
+@Repository
+public interface OrderDao extends JpaRepository<Order, Integer>{
+	@Query(value = "select * from order_table o where o.user_id=?1", 
+			  nativeQuery = true)
+	public List<Order> getOrderByUser(Integer id);
+	
+	@Query(value = "update order_table o set o.status='In Processing' where o.status='NEW' and o.ordered_on+interval'1 day' < now()", 
+			  nativeQuery = true)
+	public void updateStatus();
+	
+}

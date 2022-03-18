@@ -17,7 +17,7 @@
 				<th>Order Id</th>
 				<th>Order Status</th>
 				<th>Order Date</th>
-				<th>Order time</th>
+				<th>Order Time</th>
 				<th>user </th>
 				<th>Update</th>
 				<th>Delete</th>
@@ -30,8 +30,8 @@
 			<tr>
 				<td>${order.orderId}</td>
 				<td>${order.status}</td>
-				<td>${order.orderedOn}</td>
-				<td>${order.orderTime}</td>
+				<td>${order.getDate()}</td>
+				<td>${order.getTime()}</td>
 				<td>${order.user.id}</td>
 				<td><a href="/orders/${userid }/update/${order.orderId}">Update</a></td>
 				<td><a href="/orders/${userid }/delete/${order.orderId}">Delete</a></td>

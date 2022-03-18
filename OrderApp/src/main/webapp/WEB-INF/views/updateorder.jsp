@@ -17,11 +17,8 @@
 		<tr><td><h3>Order status :</h3></td>
 			<td> ${orderDto.status }</td>
 		</tr>
-		<tr><td><h3>Order date :</h3></td>
+		<tr><td><h3>Order on :</h3></td>
 			<td> ${orderDto.orderedOn }</td>
-		</tr>
-		<tr><td><h3>Order time :</h3></td>
-			<td> ${orderDto.orderTime }</td>
 		</tr>
 	</table>
 	

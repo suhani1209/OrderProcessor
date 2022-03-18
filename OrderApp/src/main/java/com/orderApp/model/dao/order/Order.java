@@ -1,7 +1,6 @@
 package com.orderApp.model.dao.order;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -30,8 +29,7 @@ public class Order {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer orderId;
 	private String status;
-	private LocalDate orderedOn;
-	private LocalTime orderTime;
+	private LocalDateTime orderedOn;
 	
 	@JoinColumn(name = "user_id")
 	@ManyToOne
@@ -46,10 +44,18 @@ public class Order {
 
 	public Order(List<Product> products) {
 		this.status = "NEW";
-		this.orderedOn = LocalDate.now();
-		this.orderTime=LocalTime.now();
+		this.orderedOn = LocalDateTime.now();
 		this.products = products;
 	}
 	
+	public String getDate(){
+		String date=orderedOn.getDayOfMonth()+"-"+orderedOn.getMonthValue()+"-"+orderedOn.getYear();
+		return date;
+	}
+	
+	public String getTime() {
+		String time=orderedOn.getHour()+":"+orderedOn.getMinute()+":"+orderedOn.getSecond();
+		return time;
+	}
 	
 }

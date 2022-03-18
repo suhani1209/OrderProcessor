@@ -9,7 +9,7 @@
 <title>Orders</title>
 </head>
 <body>
-Welcome ${user.username } !!
+Welcome ${user.username } !!   <a href="/logout">logout</a>
 <br>
 <a href="/addorder/${user.id}">add order</a><br>
 <a href="/orders/${user.id }">view order</a><br>

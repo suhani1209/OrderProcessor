@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 	
-	@GetMapping(path = "login")
+	@GetMapping(path = "/login")
 	public String appLogin() {
 		return "login";
 	}

@@ -1,7 +1,7 @@
 package com.orderApp.model.dto;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.orderApp.model.dao.product.Product;
@@ -17,8 +17,7 @@ import lombok.NoArgsConstructor;
 public class OrderDto {
 	private Integer orderId;
 	private String status;
-	private LocalDate orderedOn;
-	private LocalTime orderTime;
+	private LocalDateTime orderedOn;
 	private User user;
 	
 	private List<Product> products;
