@@ -25,7 +25,7 @@
 		</tr>
 	</table>
 	
-	<form:form action="/orders/update/${id}" method="post" modelAttribute="orderDto">
+	<form:form action="/orders/${userid}/update/${id}" method="post" modelAttribute="orderDto">
 		<c:forEach items="${products}" var="product">
 
 			<tr>

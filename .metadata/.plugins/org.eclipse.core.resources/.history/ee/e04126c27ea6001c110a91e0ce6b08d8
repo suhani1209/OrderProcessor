@@ -1,0 +1,5 @@
+package com.orderApp.securityConfig;
+
+public class SecurityConfig {
+
+}

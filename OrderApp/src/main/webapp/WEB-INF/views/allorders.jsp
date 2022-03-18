@@ -9,7 +9,8 @@
 <title>Orders</title>
 </head>
 <body>
-	
+<a href="/home">Home</a>
+	${userid }
 	<table>
 		<thead>
 			<tr>
@@ -17,6 +18,7 @@
 				<th>Order Status</th>
 				<th>Order Date</th>
 				<th>Order time</th>
+				<th>user </th>
 				<th>Update</th>
 				<th>Delete</th>
 			</tr>
@@ -30,8 +32,9 @@
 				<td>${order.status}</td>
 				<td>${order.orderedOn}</td>
 				<td>${order.orderTime}</td>
-				<td><a href="/orders/update/${order.orderId}">Update</a></td>
-				<td><a href="/orders/delete/${order.orderId}">Delete</a></td>
+				<td>${order.user.id}</td>
+				<td><a href="/orders/${userid }/update/${order.orderId}">Update</a></td>
+				<td><a href="/orders/${userid }/delete/${order.orderId}">Delete</a></td>
 			</tr>
 			</c:if>
 		</c:forEach>

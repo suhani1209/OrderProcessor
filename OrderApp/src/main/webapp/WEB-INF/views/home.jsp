@@ -9,10 +9,12 @@
 <title>Orders</title>
 </head>
 <body>
-home page for user 
-<a href="/addorder">add order</a><br>
-<a href="/orders">update</a><br>
-<a href="/orders">delete</a><br>
+Welcome ${user.username } !!
+<br>
+<a href="/addorder/${user.id}">add order</a><br>
+<a href="/orders/${user.id }">view order</a><br>
+<a href="/orders/${user.id }">update</a><br>
+<a href="/orders/${user.id }">delete</a><br>
 <table>
 	<thead>
 	<tr>
