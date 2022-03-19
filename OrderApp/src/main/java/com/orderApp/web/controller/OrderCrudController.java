@@ -17,9 +17,9 @@ import com.orderApp.model.dao.user.User;
 import com.orderApp.model.dto.DtoUtil;
 import com.orderApp.model.dto.OrderDetailDto;
 import com.orderApp.model.dto.OrderDto;
-import com.orderApp.model.service.OrderService;
-import com.orderApp.model.service.ProductService;
-import com.orderApp.model.service.UserService;
+import com.orderApp.model.service.order.OrderService;
+import com.orderApp.model.service.product.ProductService;
+import com.orderApp.model.service.user.UserService;
 
 @Controller
 public class OrderCrudController {

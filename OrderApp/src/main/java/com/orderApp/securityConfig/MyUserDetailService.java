@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.orderApp.model.dao.user.User;
-import com.orderApp.model.service.UserService;
+import com.orderApp.model.service.user.UserService;
 
 @Service
 public class MyUserDetailService implements UserDetailsService{

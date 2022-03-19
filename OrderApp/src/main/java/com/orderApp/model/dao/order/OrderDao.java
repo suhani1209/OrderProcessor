@@ -18,7 +18,7 @@ public interface OrderDao extends JpaRepository<Order, Integer>{
 	
 	@Transactional
 	@Modifying(clearAutomatically = true)
-	@Query(value = "update order_table set status='In Processing' where status='NEW' and ordered_on+interval'1 minute' < now()", 
+	@Query(value = "update order_table set status='In Processing' where status='NEW' and ordered_on+interval'1 day' < now()", 
 			  nativeQuery = true)
 	public void updateStatus();
 	

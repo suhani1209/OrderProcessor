@@ -27,5 +27,16 @@ public class ExceptionHandlerController {
 		return mav;
 	}
 	
+	@ExceptionHandler(value = Exception.class)
+	public ModelAndView handle500(HttpServletRequest req, 
+               Exception e) throws Exception {
+		
+		logger.error("[URL] : {}", req.getRequestURL(), e); 
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("exception", e);
+		mav.addObject("url", req.getRequestURL());
+		mav.setViewName("allerror");
+		return mav;
+	}
 	
 }

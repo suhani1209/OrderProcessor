@@ -16,10 +16,10 @@ public class UpdateStatusOfProduct {
 		this.orderDao=orderDao;
 	}
 	
-	@Scheduled(cron="0 0/2 * * * *")
+	@Scheduled(cron="0 0 0/1 * * *")
 	public void changeStatus()
 	{
-		System.out.println("*******************************updating status");
+		System.out.println("**updating status");
 		orderDao.updateStatus();
 	}
 }
