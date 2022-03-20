@@ -20,6 +20,7 @@
         	#searchId{
         		width:75%;
         		margin-left:25%;
+        		padding:10px 10px;
         	}
         	.button{
 			        background-color: green;
@@ -33,6 +34,7 @@
 			}
         	table {
 			  width: 100%;
+			  margin-top:20px;
 			}
 			th, td {
 			  text-align: left;
