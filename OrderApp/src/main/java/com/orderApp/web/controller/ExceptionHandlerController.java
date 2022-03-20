@@ -28,7 +28,7 @@ public class ExceptionHandlerController {
 	}
 	
 	@ExceptionHandler(value = Exception.class)
-	public ModelAndView handle500(HttpServletRequest req, 
+	public ModelAndView handleAllException(HttpServletRequest req, 
                Exception e) throws Exception {
 		
 		logger.error("[URL] : {}", req.getRequestURL(), e); 

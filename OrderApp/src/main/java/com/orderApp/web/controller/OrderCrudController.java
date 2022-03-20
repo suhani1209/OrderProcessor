@@ -110,22 +110,24 @@ public class OrderCrudController {
 	
 	// view order detailss
 	@GetMapping(path="/orders/{userid}/view/{orderId}")
-	public ModelAndView viewOrderDetails(ModelAndView mv,@PathVariable(name = "orderId")  Integer orderId)
+	public ModelAndView viewOrderDetails(ModelAndView mv,@PathVariable(name = "orderId")  Integer orderId,@PathVariable(name = "userid")  Integer userid)
 	{
 		mv.setViewName("vieworder");
+		mv.addObject("userid",userid);
 		mv.addObject("order",orderService.getByOrderId(orderId));
 		return mv;
 	}
 	
 	// search order by id
 	@PostMapping(path="/orders/{userid}/view")
-	public ModelAndView searchByOrderNumber(ModelAndView mv,@RequestParam(name="searchId") Integer orderid)
+	public ModelAndView searchByOrderNumber(ModelAndView mv,@RequestParam(name="searchId") Integer orderid,@PathVariable(name="userid") Integer userid)
 	{
 		System.out.println(orderid);
 		System.out.println("**search by order number "+ orderid);
 		mv.setViewName("vieworder");
 		Order order=orderService.getByOrderId(orderid);
 		System.out.println(order);
+		mv.addObject("userid",userid);
 		mv.addObject("order",order);
 		return mv;
 	}

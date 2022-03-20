@@ -20,5 +20,10 @@ public class OrderDto {
 	private LocalDateTime orderedOn;
 	private User user;
 	
+	public String getDate(){
+		String date=orderedOn.getDayOfMonth()+"-"+orderedOn.getMonthValue()+"-"+orderedOn.getYear();
+		return date;
+	}
+	
 	private List<Product> products;
 }
