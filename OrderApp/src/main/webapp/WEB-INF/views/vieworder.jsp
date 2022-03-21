@@ -50,11 +50,16 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
                         <a href="/home" class="nav-item nav-link">Home</a>
-                        <a href="/addorder/${userid}" class="nav-item nav-link">Shop</a>
-                        <a href="/orders/${userid }" class="nav-item nav-link">My Orders</a>
-                        <a href="/orders/${userid }" class="nav-item nav-link">Update Orders</a>
-                        <a href="/orders/${userid }" class="nav-item nav-link">Delete</a>
-                        <a href="/logout" class="nav-item nav-link">Logout</a>
+                        <a href="/addorder/${user.id}" class="nav-item nav-link">Shop</a>
+                        <a href="/orders/${user.id }" class="nav-item nav-link">My Orders</a>
+                       <%--  <a href="/orders/${user.id }" class="nav-item nav-link">Update Orders</a>
+                        <a href="/orders/${user.id }" class="nav-item nav-link">Delete</a> --%>
+                        <div class="nav-item dropdown">
+                            <a href="/home" class="nav-link dropdown-toggle" data-toggle="dropdown">Hi, ${user.username}</a>
+                            <div class="dropdown-menu">
+                                <a href="/logout" class="dropdown-item">Logout</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -65,7 +70,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h2>View order</h2>
+                        <h2>Order details</h2>
                     </div>
                     <div class="col-12">
                         <a>Order id : ${order.orderId }</a>

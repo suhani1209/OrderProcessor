@@ -27,6 +27,7 @@ public class OrderServiceImpl implements OrderService{
 	}
 	@Override
 	public List<Order> getAllOrders() {
+		
 		return orderDao.findAll();
 	}
 
@@ -62,5 +63,13 @@ public class OrderServiceImpl implements OrderService{
 	public List<Order> getOrderByUser(Integer userId) {
 		return orderDao.getOrderByUser(userId);
 	}
+	@Override
+	public List<Order> findAll(Integer id) {
+		if(id!=null) {
+			return orderDao.findAll(id);
+		}
+		return orderDao.findAll();
+	}
+	
 
 }

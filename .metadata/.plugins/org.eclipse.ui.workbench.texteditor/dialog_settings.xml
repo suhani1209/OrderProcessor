@@ -6,8 +6,22 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="carousel"/>
+		<item key="selection" value="btn"/>
 		<list key="findhistory">
+			<item value="btn"/>
+			<item value="modal-content"/>
+			<item value="modal"/>
+			<item value="model"/>
+			<item value="wrapper"/>
+			<item value="icon"/>
+			<item value="fourth"/>
+			<item value="foruth"/>
+			<item value="page"/>
+			<item value="fa"/>
+			<item value="far"/>
+			<item value="footer"/>
+			<item value="page-header"/>
+			<item value="header"/>
 			<item value="carousel"/>
 		</list>
 		<list key="replacehistory">

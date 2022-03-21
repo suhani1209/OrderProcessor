@@ -29,7 +29,6 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
                         <a href="/home" class="nav-item nav-link">Home</a>
-                  
                         <a href="/logout" class="nav-item nav-link">Logout</a>
                     </div>
                 </div>

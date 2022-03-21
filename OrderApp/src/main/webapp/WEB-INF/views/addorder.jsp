@@ -24,6 +24,7 @@
 			        color: #fff;
 			        padding: 15px 30px;
 			        margin-left:45%;
+			        margin-top:50px;
 			        text-decoration: none;
 			        cursor: pointer;
 			        align:center
@@ -33,12 +34,17 @@
 			}
 			th, td {
 			  text-align: left;
-			  padding: 8px;
+			  padding:8px;
 			}
 			th{
 				background-color: #f2f2f2;
 			}
 			tr:nth-child(even) {background-color: #f2f2f2;}
+			
+			.checkbox-style{
+			  margin-left:130px;
+			  margin-right:-2px;
+			}
         </style>
 </head>
 <body>
@@ -53,11 +59,16 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
                         <a href="/home" class="nav-item nav-link">Home</a>
-                        <a href="/addorder/${userid}" class="nav-item nav-link">Shop</a>
-                        <a href="/orders/${userid }" class="nav-item nav-link">My Orders</a>
-                        <a href="/orders/${userid }" class="nav-item nav-link">Update Orders</a>
-                        <a href="/orders/${userid }" class="nav-item nav-link">Delete</a>
-                        <a href="/logout" class="nav-item nav-link">Logout</a>
+                        <a href="/addorder/${user.id}" class="nav-item nav-link">Shop</a>
+                        <a href="/orders/${user.id }" class="nav-item nav-link">My Orders</a>
+                        <%-- <a href="/orders/${user.id }" class="nav-item nav-link">Update Orders</a>
+                        <a href="/orders/${user.id }" class="nav-item nav-link">Delete</a> --%>
+                        <div class="nav-item dropdown">
+                            <a href="/home" class="nav-link dropdown-toggle" data-toggle="dropdown">Hi, ${user.username}</a>
+                            <div class="dropdown-menu">
+                                <a href="/logout" class="dropdown-item">Logout</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,14 +104,14 @@
 						${product.productName}
 						${product.productCategory} --%>
 						<tr>
-							<td><form:checkbox path="products" value="${product}" /></td>
+							<td><div class="checkbox-style"><form:checkbox path="products" value="${product}"/></div></td>
 							<td>${product.productName}</td>
 							<td>${product.productCategory}</td>
 						</tr>
 					
 				</c:forEach> 
 			</table>
-			<input type ="submit" class="button" />
+			<input type ="submit" class="button" value="Place Order"/>
 			</form:form>
 			
 		<%@include file="footer.jsp" %>

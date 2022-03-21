@@ -18,8 +18,12 @@ public interface OrderDao extends JpaRepository<Order, Integer>{
 	
 	@Transactional
 	@Modifying(clearAutomatically = true)
-	@Query(value = "update order_table set status='In Processing' where status='NEW' and ordered_on+interval'1 day' < now()", 
+	@Query(value = "update order_table set status='In Processing' where status='NEW' and ordered_on+interval'1 minute' < now()", 
 			  nativeQuery = true)
 	public void updateStatus();
+	
+	@Query(value="select * from order_table where status<> 'DELETED' and order_id=?1", 
+			  nativeQuery = true)
+	public List<Order> findAll(Integer id);
 	
 }
