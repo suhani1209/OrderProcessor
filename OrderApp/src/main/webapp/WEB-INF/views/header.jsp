@@ -3,9 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>trying frontend</title>
- <!-- Google Font -->
+		<meta charset="ISO-8859-1">
+		 <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet"> 
         
         <!-- CSS Libraries -->
@@ -18,7 +17,7 @@
         </style>
 </head>
 <body>
-  <!-- Carousel Start -->
+  		<!-- Carousel Start -->
         <div class="carousel">
             <div class="container-fluid">
                 <div class="owl-carousel">

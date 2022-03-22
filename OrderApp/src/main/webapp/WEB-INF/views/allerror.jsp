@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Error</title>
-<!-- Google Font -->
+		<!-- Google Font -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet"> 
         
         <!-- CSS Libraries -->
@@ -40,7 +40,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h2>Oops, some error occured !!</h2>
+                        <h2>Oops, some error occurred !!</h2>
                     </div>
                     <div class="col-12">
                         Please redirect to <a href="/home">Home</a> page

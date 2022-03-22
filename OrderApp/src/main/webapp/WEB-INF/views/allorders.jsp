@@ -5,106 +5,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Orders</title>
-<!-- Google Font -->
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700"
-	rel="stylesheet">
+	<meta charset="ISO-8859-1">
+	<title>Orders</title>
+	
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet">
+	
+	<!-- CSS Libraries -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+	<link href="../../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-<!-- CSS Libraries -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-	rel="stylesheet">
-<link href="../../lib/owlcarousel/assets/owl.carousel.min.css"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<!-- Bootstrap CSS -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-	crossorigin="anonymous">
+	
 
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-<style type="text/css">
-<%@include file ="../../css/style.css" %> 
-#searchId {
-	width: 60%;
-	margin-left: 10%;
-	padding: 10px 10px;
-}
-
-.button {
-	background-color: green;
-	border: none;
-	color: #fff;
-	padding: 12px 12px;
-	text-decoration: none;
-	cursor: pointer;
-	align: center
-}
-
-table {
-	width: 100%;
-	margin-top: 20px;
-}
-
-th, td {
-	text-align: left;
-	padding: 8px;
-	padding-left:30px;
-}
-
-th {
-	background-color: #f2f2f2;
-}
-
-tr:nth-child(even) {
-	background-color: #f2f2f2;
-}
-
-button {
-	background-color: #04AA6D;
-	color: white;
-	padding: 14px 20px;
-	margin: 8px 0;
-	border: none;
-	cursor: pointer;
-	width: 100%;
-	opacity: 0.9;
-}
-
-button:hover {
-	opacity: 1;
-}
-
-.modal-header {
-	background: #F7941E;
-	color: #fff;
-}
-
-.required:after {
-	content: "*";
-	color: red;
-}
-.alert alert-success alert-dismissible fade show {
-margin-right: 350px;
-}
-</style>
+	<style type="text/css">
+		<%@include file ="../../css/style.css" %> 
+		<%@include file="../../css/allorders.css" %>
+	</style>
 </head>
 <body>
 	<!-- Nav Bar Start -->
@@ -152,12 +77,14 @@ margin-right: 350px;
 	</div>
 	<!-- Page Header End -->
 
+	<!----------- SEARCH BY ORDER ID FORM  ------------>
 	<form action="/orders/${user.id}" method="post">
 		<input type="text" name="searchId" id="searchId"
 			placeholder="Enter order id" /> <input type="submit" class="button"
 			value="Search" /> <input type="reset" class="button" value="Reset" />
 	</form>
-
+	
+	<!---------------- DISMISSIBLE ALERTS  ------------->
 	<%
 	if (request.getParameter("success") != null) {
 	%>
@@ -210,28 +137,10 @@ margin-right: 350px;
 								href="/orders/${order.user.id}/update/${order.orderId}"><i
 									class="fas fa-edit"></i></a></td>
 
-							<%-- <td><a class="btn btn-sm del" onclick="document.getElementById('id01-${order.orderId}').style.display='block'"><i class="fas fa-trash"></i></a></td>
-
-							<div id="id01-${order.orderId}" class="modal">
-		
-								<span onclick="document.getElementById('id01-${order.orderId}').style.display='none'" class="close" title="Close Modal">x</span>
-		
-								<form class="modal-content" action="/orders/${user.id}/delete/${order.orderId}">
-									<div class="container">
-										<h1>Delete Order</h1>
-										<p>Are you sure you want to delete this order?</p>
-										<div class="clearfix">
-											<button type="button" onclick="document.getElementById('id01-${order.orderId}').style.display='none'" class="cancelbtn">Cancel</button>
-											<button class="deletebtn">Delete</button>
-										</div>
-									</div>
-								</form>
-							</div>  --%>
-
 
 							<td><a data-bs-toggle="modal"
 								href="#myModal-${order.orderId }"><i class="fa fa-trash-o"></i></a></td>
-							<div class="modal" id="myModal-${order.orderId }">
+							<div class="modal" id="myModal-${order.orderId}">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -266,10 +175,15 @@ margin-right: 350px;
 					</c:if>
 				</c:forEach>
 			</table>
+			
+			<!------------- INCLUDE FOOTER JSP PAGE  ---------->
 			<%@include file="footer.jsp"%>
-			<script
-				src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+			
+			<!--------------INCLUDE SCRIPT FILES  ------------>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
 				integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
 				crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>

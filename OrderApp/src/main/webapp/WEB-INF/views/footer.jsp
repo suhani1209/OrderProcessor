@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 </head>
 <body>
-<!-- Footer Start -->
+		<!-- Footer Start -->
         <div class="footer">
             <div class="copyright">
                 <div class="container">
@@ -17,6 +17,7 @@
         </div>
         <!-- Footer End -->
 
+		<!-----------BACK TO TOP BUTTON -------------->
         <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
         <!-- JavaScript Libraries -->

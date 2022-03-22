@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<!-- Google Font -->
+		<meta charset="ISO-8859-1">
+		<!-- Google Font -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet"> 
         
         <!-- CSS Libraries -->
@@ -17,7 +17,7 @@
         </style>
 </head>
 <body>
-<!-- Nav Bar Start -->
+		<!-- Nav Bar Start -->
         <div class="navbar navbar-expand-lg bg-light navbar-light">
             <div class="container-fluid">
                 <a href="/home" class="navbar-brand">Order <span>Processor</span></a>

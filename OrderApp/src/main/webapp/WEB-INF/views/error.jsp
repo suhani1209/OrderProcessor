@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Error</title>
-<!-- Google Font -->
+		<meta charset="ISO-8859-1">
+		<title>Error</title>
+		<!-- Google Font -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet"> 
         
         <!-- CSS Libraries -->
@@ -19,7 +19,7 @@
 </head>
 <body>
 
-<!-- Nav Bar Start -->
+		<!-- Nav Bar Start -->
         <div class="navbar navbar-expand-lg bg-light navbar-light">
             <div class="container-fluid">
                 <a href="/home" class="navbar-brand">Order <span>Processor</span></a>
@@ -51,6 +51,8 @@
             </div>
         </div>
         <!-- Page Header End -->
-<%@include file="footer.jsp" %>
+        
+        <!---------------------INCLUDE FOOTER JSP ------------->
+		<%@include file="footer.jsp" %>
 </body>
 </html>

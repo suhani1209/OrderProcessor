@@ -18,33 +18,7 @@
         
         <style type="text/css">
         	<%@include file="../../css/style.css" %>
-        	.button{
-			        background-color: green;
-			        border: none;
-			        color: #fff;
-			        padding: 15px 30px;
-			        margin-left:45%;
-			        margin-top:50px;
-			        text-decoration: none;
-			        cursor: pointer;
-			        align:center
-			}
-        	table {
-			  width: 100%;
-			}
-			th, td {
-			  text-align: left;
-			  padding:8px;
-			}
-			th{
-				background-color: #f2f2f2;
-			}
-			tr:nth-child(even) {background-color: #f2f2f2;}
-			
-			.checkbox-style{
-			  margin-left:130px;
-			  margin-right:-2px;
-			}
+        	<%@include file="../../css/add.css" %>
         </style>
 </head>
 <body>

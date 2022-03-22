@@ -5,9 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>View Order</title>
-<!-- Google Font -->
+		<meta charset="ISO-8859-1">
+		<title>Order Details</title>
+		<!-- Google Font -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet"> 
         
         <!-- CSS Libraries -->
@@ -17,23 +17,7 @@
         
         <style type="text/css">
         	<%@include file="../../css/style.css" %>
-        	.page-header{
-        		background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(https://media.istockphoto.com/photos/shopping-online-concept-shopping-service-on-the-online-web-with-by-picture-id1133980246?k=20&m=1133980246&s=612x612&w=0&h=bwut2YUV7gtnjrv354523xU_9S-TtKQOqGTdiGMsPfs=);
-        		background-repeat: no-repeat;
-    			background-size: 100% 150%;
-        	}
-        	table {
-        	margin-top:-50px;
-			  width: 100%;
-			}
-			th, td {
-			  text-align: left;
-			  padding: 8px;
-			}
-			th{
-				background-color: #f2f2f2;
-			}
-			tr:nth-child(even) {background-color: #f2f2f2;}
+        	<%@include file="../../css/view.css" %>
         </style>
         
 
@@ -65,6 +49,7 @@
             </div>
         </div>
         <!-- Nav Bar End -->
+        
         <!-- Page Header Start -->
         <div class="page-header">
             <div class="container">
@@ -81,6 +66,8 @@
             </div>
         </div>
         <!-- Page Header End -->
+	
+	<!----------- DETAILS OF ITEMS USER ORDERED ----------->
 	<div class="section-header text-center">
 			<h2>You ordered : </h2>
 	</div>
@@ -102,6 +89,8 @@
 	</c:forEach>
 	
 	</table>
+	
+	<!------------------INCLUDE FOOTER JSP --------------->
 	<%@include file="footer.jsp" %>
 </body>
 </html>
