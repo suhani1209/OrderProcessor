@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService{
 		this.userDao = userDao;
 	}
 	
-	
+	/**************BEFORE SAVING USER TO DATABASE FIRST ENCODE THE PASSWORD ENTERED *************/
 	@Override
 	public void addUser(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));

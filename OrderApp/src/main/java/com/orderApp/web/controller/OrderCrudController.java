@@ -35,7 +35,7 @@ public class OrderCrudController {
 		this.userService = userService;
 	}
 
-	/**************************************HOME PAGE***************************************/
+	/***************************HOME PAGE AUTHENTICATED USER WILL FIRST COME AT THIS PAGE*********************/
 	@GetMapping(path = "/home")
 	public ModelAndView sayHome(Principal principal, ModelAndView mv) {
 		User user = userService.findByUsername(principal.getName());
@@ -45,7 +45,7 @@ public class OrderCrudController {
 		return mv;
 	}
 
-	/*************************************VIEW ALL ORDERS OF A USER*************************/
+	/**********************VIEW ALL ORDERS OF A USER*********INPUT PARAMETERS : USER ID ******************/
 	@GetMapping(path = "orders/{id}")
 	public ModelAndView getAllOrders(ModelAndView mv, @PathVariable(name = "id") Integer id) {
 		mv.setViewName("allorders");
@@ -56,7 +56,8 @@ public class OrderCrudController {
 	}
 
 	
-	/***************************************SEARCH ORDER BY ORDER ID***********************/
+	/**************SEARCH ORDER BY ORDER ID*************
+	 *************INPUT PARAMETERS : USER ID, ORDER ID (FOR WHICH SEARCH HAS TO BE PERFORMED)**********/
 	@PostMapping(path = "orders/{userid}")
 	public ModelAndView getOrderById(ModelAndView mv,@RequestParam(name = "searchId") Integer orderid,@PathVariable(name = "userid") Integer userid ) {
 		mv.setViewName("allorders");
@@ -71,25 +72,24 @@ public class OrderCrudController {
 		return mv;
 	}
 
-	/**************************************DELETE ORDER**********************************/
+	/*******************************DELETE ORDER**********
+	 *******************INPUT PARAMETERS : USER ID, ORDER ID********************/
 	@GetMapping(path = "orders/{userid}/delete/{id}")
-	public String deleteOrder(@PathVariable(name = "userid") Integer userid,
-			@PathVariable(name = "id") Integer orderId) {
+	public String deleteOrder(@PathVariable(name = "userid") Integer userid,@PathVariable(name = "id") Integer orderId) {
 		orderService.deleteOrder(orderId);
 		return "redirect:../../../orders/{userid}?success=Order deleted successfully";
 	}
 
-	/*************************************UPDATE ORDER**********************************/
+	/*****************************UPDATE ORDER************
+	 ********************INPUT PARAMETERS USER ID, ORDER ID(ORDER TO BE UPDATED*****************/
 	@GetMapping(path = "orders/{userid}/update/{id}")
-	public ModelAndView updateOrder(@PathVariable(name = "userid") Integer userid, ModelAndView mv,
-			@PathVariable(name = "id") Integer id) {
+	public ModelAndView updateOrder(@PathVariable(name = "userid") Integer userid, ModelAndView mv,@PathVariable(name = "id") Integer id) {
 		mv.setViewName("updateorder");
 		Order order = orderService.getByOrderId(id);
 		mv.addObject("user", userService.findById(userid));
 		mv.addObject("id", order.getOrderId());
 		mv.addObject("orderDto", DtoUtil.convertToOrderDto(order));
 		mv.addObject("products", productService.getAllProducts());
-
 		return mv;
 	}
 
@@ -118,7 +118,8 @@ public class OrderCrudController {
 	}
 
 	
-	/*************************************VIEW ORDER BY ORDER ID*********************/
+	/************************VIEW ORDER BY ORDER ID**********
+	 *********************INPUT PARAMETER : USER ID, ORDER ID(WHOSE DETAILS ARE TO BE VIEWED*********/
 	@GetMapping(path = "/orders/{userid}/view/{orderId}")
 	public ModelAndView viewOrderDetails(ModelAndView mv, @PathVariable(name = "orderId") Integer orderId,
 			@PathVariable(name = "userid") Integer userid) {

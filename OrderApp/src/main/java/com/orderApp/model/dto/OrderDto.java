@@ -1,6 +1,5 @@
 package com.orderApp.model.dto;
 
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -15,6 +14,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderDto {
+	/*********FORM BEAN ******USE : UPDATE ORDER***************************/
+	
 	private Integer orderId;
 	private String status;
 	private LocalDateTime orderedOn;

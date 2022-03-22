@@ -12,5 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderDetailDto {
+	/*********USE : ADD ORDER **************
+	 ******STORED THE PRODUCTS WHICH USER SELECTED FOR ADDING IN NEW ORDER***********************************/
 	private List<Product> products;
 }
