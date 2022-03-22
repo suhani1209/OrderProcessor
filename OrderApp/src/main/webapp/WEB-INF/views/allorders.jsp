@@ -13,9 +13,7 @@
 	rel="stylesheet">
 
 <!-- CSS Libraries -->
-<link
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
 	rel="stylesheet">
@@ -30,6 +28,13 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+	crossorigin="anonymous">
+
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script
@@ -37,7 +42,6 @@
 
 <style type="text/css">
 <%@include file ="../../css/style.css" %> 
-
 #searchId {
 	width: 60%;
 	margin-left: 10%;
@@ -48,7 +52,7 @@
 	background-color: green;
 	border: none;
 	color: #fff;
-	padding: 15px 15px;
+	padding: 12px 12px;
 	text-decoration: none;
 	cursor: pointer;
 	align: center
@@ -62,6 +66,7 @@ table {
 th, td {
 	text-align: left;
 	padding: 8px;
+	padding-left:30px;
 }
 
 th {
@@ -71,108 +76,33 @@ th {
 tr:nth-child(even) {
 	background-color: #f2f2f2;
 }
+
 button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
+	background-color: #04AA6D;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	opacity: 0.9;
 }
 
 button:hover {
-  opacity:1;
+	opacity: 1;
 }
 
-/* Float cancel and delete buttons and add an equal width */
-.cancelbtn, .deletebtn {
-  float: left;
-  width: 50%;
+.modal-header {
+	background: #F7941E;
+	color: #fff;
 }
 
-/* Add a color to the cancel button */
-.cancelbtn {
-  background-color: #ccc;
-  color: black;
+.required:after {
+	content: "*";
+	color: red;
 }
-
-/* Add a color to the delete button */
-.deletebtn {
-  background-color: #f44336;
-}
-
-/* Add padding and center-align text to the container */
-.container {
-  padding: 16px;
-  text-align: center;
-}
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: #474e5d;
-  padding-top: 50px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: white;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* Style the horizontal ruler */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
- 
-/* The Modal Close Button (x) */
-.close {
-  position: absolute;
-  right: 35px;
-  top: 15px;
-  font-size: 40px;
-  font-weight: bold;
-  color: #f1f1f1;
-}
-
-.close:hover,
-.close:focus {
-  color: #f44336;
-  cursor: pointer;
-}
-
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-/* Change styles for cancel button and delete button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .deletebtn {
-     width: 100%;
-  }
-}
-form {
-	display: flex;
-}
-
-input.button {
-	margin-right: 20px;
-	margin-left: 20px;
+.alert alert-success alert-dismissible fade show {
+margin-right: 350px;
 }
 </style>
 </head>
@@ -228,11 +158,26 @@ input.button {
 			value="Search" /> <input type="reset" class="button" value="Reset" />
 	</form>
 
+	<%
+	if (request.getParameter("success") != null) {
+	%>
+
+	<div class="alert alert-success alert-dismissible fade show"
+		role="alert" style="margin-top: 2rem;width: max-content; margin-inline: auto;">
+		<%=request.getParameter("success")%>
+		<a type="button" class="message" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</a>
+	</div>
+	<%
+	}
+	%>
 
 	<c:choose>
 		<c:when test="${message !=null}">
 			<div class="section-header text-center">
-				<h2 style="margin-top:30px">${message}</h2>
+				<h2 style="margin-top: 30px">${message}</h2>
 			</div>
 		</c:when>
 
@@ -262,52 +207,58 @@ input.button {
 							<td>${order.getDate()}</td>
 							<td>${order.getTime()}</td>
 							<td><a
-								href="/orders/${order.user.id}/update/${order.orderId}"><i class="fas fa-edit"></i></a></td>
+								href="/orders/${order.user.id}/update/${order.orderId}"><i
+									class="fas fa-edit"></i></a></td>
 
-							<td><a class="btn btn-sm del "
-						onclick="document.getElementById('id01-${order.orderId}').style.display='block'">
-							<i class="fas fa-trash"></i>
-					</a></td>
+							<%-- <td><a class="btn btn-sm del" onclick="document.getElementById('id01-${order.orderId}').style.display='block'"><i class="fas fa-trash"></i></a></td>
 
-					<div id="id01-${order.orderId}" class="modal">
-
-						<span onclick="document.getElementById('id01-${order.orderId}').style.display='none'"
-							class="close" title="Close Modal">x</span>
-
-						<form class="modal-content" action="/orders/${user.id}/delete/${order.orderId}">
-							<div class="container">
-								<h1>Delete Order</h1>
-								<p>Are you sure you want to delete ths order?</p>
-								<div class="clearfix">
-									<button type="button" onclick="document.getElementById('id01-${order.orderId}').style.display='none'"
-										class="cancelbtn">Cancel</button>
-									<button class="deletebtn">Delete</button>
-								</div>
-							</div>
-						</form>
-					</div> 
-
-
-							<%-- <td><a onclick="document.getElementById('id01-${order.orderId}').style.display='block'">Delete</a></td>
 							<div id="id01-${order.orderId}" class="modal">
-								<span onclick="document.getElementById('id01-${order.orderId}').style.display='none'"
-									class="close" title="Close Modal">×</span>
+		
+								<span onclick="document.getElementById('id01-${order.orderId}').style.display='none'" class="close" title="Close Modal">x</span>
+		
 								<form class="modal-content" action="/orders/${user.id}/delete/${order.orderId}">
 									<div class="container">
 										<h1>Delete Order</h1>
 										<p>Are you sure you want to delete this order?</p>
 										<div class="clearfix">
-											<button type="button"
-												onclick="document.getElementById('id01-${order.orderId}').style.display='none'"
-												class="cancelbtn">Cancel</button>
-											<button type="button"
-												onclick="document.getElementById('id01-${order.orderId}').style.display='none'"
-												class="deletebtn">Delete</button>
+											<button type="button" onclick="document.getElementById('id01-${order.orderId}').style.display='none'" class="cancelbtn">Cancel</button>
+											<button class="deletebtn">Delete</button>
 										</div>
 									</div>
 								</form>
-							</div> --%>
+							</div>  --%>
 
+
+							<td><a data-bs-toggle="modal"
+								href="#myModal-${order.orderId }"><i class="fa fa-trash-o"></i></a></td>
+							<div class="modal" id="myModal-${order.orderId }">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title">Delete order</h5>
+											<button type="button" class="btn-close"
+												data-bs-dismiss="modal"></button>
+										</div>
+										<div class="modal-body">
+											<form action="/orders/${user.id}/delete/${order.orderId}">
+												<div class="mb-3">
+													<p>Are you sure you want to delete this order?</p>
+													<p class="text-danger">
+														<small>This action cannot be undone.</small>
+													</p>
+												</div>
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-danger">Delete</button>
+													<button type="button" class="btn btn-secondary"
+														data-bs-dismiss="modal" aria-hidden="true"
+														onclick="document.getElementById('myModal').style.display='none'">Cancel</button>
+
+												</div>
+											</form>
+										</div>
+
+									</div>
+								</div>
 							<td><a href="/orders/${order.user.id}/view/${order.orderId}">Details</a></td>
 							<td>${order.user.shippingAddress}</td>
 							<td>${order.user.phoneNumber}</td>
@@ -315,7 +266,10 @@ input.button {
 					</c:if>
 				</c:forEach>
 			</table>
-
 			<%@include file="footer.jsp"%>
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+				crossorigin="anonymous"></script>
 </body>
 </html>

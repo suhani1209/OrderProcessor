@@ -123,7 +123,7 @@
 			<br>
 		</c:forEach> 
 		</table>
-	<input type ="submit" class="button"/>
+	<input type ="submit" class="button" value="Update"/>
 	</form:form>
 	
 	<%@include file="footer.jsp" %>

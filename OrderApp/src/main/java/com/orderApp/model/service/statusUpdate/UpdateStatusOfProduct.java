@@ -16,10 +16,10 @@ public class UpdateStatusOfProduct {
 		this.orderDao=orderDao;
 	}
 	
+	/***********SCHEDULED JOB RUNNING EVERY HOUR AND UPDATING THE STATUS OF NEW ORDERS IF PLACED BEFORE 24 HOURS ******************/
 	@Scheduled(cron="0 0/1 * * * *")
 	public void changeStatus()
 	{
-		System.out.println("**updating status");
 		orderDao.updateStatus();
 	}
 }

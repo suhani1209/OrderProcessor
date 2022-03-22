@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,38 +35,33 @@ public class OrderCrudController {
 		this.userService = userService;
 	}
 
-	// home page
+	/**************************************HOME PAGE***************************************/
 	@GetMapping(path = "/home")
 	public ModelAndView sayHome(Principal principal, ModelAndView mv) {
-		System.out.println("**" + principal.getName());
 		User user = userService.findByUsername(principal.getName());
 		mv.setViewName("home");
 		mv.addObject("products", productService.getAllProducts());
 		mv.addObject("user", user);
-		System.out.println("**" + user);
 		return mv;
 	}
 
-	// view all orders ...
+	/*************************************VIEW ALL ORDERS OF A USER*************************/
 	@GetMapping(path = "orders/{id}")
 	public ModelAndView getAllOrders(ModelAndView mv, @PathVariable(name = "id") Integer id) {
 		mv.setViewName("allorders");
 		List<Order> orders = orderService.getOrderByUser(id);
-		System.out.println("**came for all orders " + id);
 		mv.addObject("user", userService.findById(id));
 		mv.addObject("orders", orders);
 		return mv;
 	}
 
-	// view order by order id...
+	
+	/***************************************SEARCH ORDER BY ORDER ID***********************/
 	@PostMapping(path = "orders/{userid}")
 	public ModelAndView getOrderById(ModelAndView mv,@RequestParam(name = "searchId") Integer orderid,@PathVariable(name = "userid") Integer userid ) {
-		System.out.println("****************** hello search by id called ...."+orderid);
 		mv.setViewName("allorders");
-		
 		List<Order> orders = orderService.findAll(orderid);
 		mv.addObject("user", userService.findById(userid));
-		System.out.println("***********want to search by id "+orderid);
 		if(orders.size()==0)
 		{
 			mv.addObject("message", "Order with id : "+orderid+" does not exist");
@@ -77,20 +71,19 @@ public class OrderCrudController {
 		return mv;
 	}
 
-	// delete order...
+	/**************************************DELETE ORDER**********************************/
 	@GetMapping(path = "orders/{userid}/delete/{id}")
 	public String deleteOrder(@PathVariable(name = "userid") Integer userid,
 			@PathVariable(name = "id") Integer orderId) {
 		orderService.deleteOrder(orderId);
-		return "redirect:../../../orders/{userid}";
+		return "redirect:../../../orders/{userid}?success=Order deleted successfully";
 	}
 
-	// update order...
+	/*************************************UPDATE ORDER**********************************/
 	@GetMapping(path = "orders/{userid}/update/{id}")
 	public ModelAndView updateOrder(@PathVariable(name = "userid") Integer userid, ModelAndView mv,
 			@PathVariable(name = "id") Integer id) {
 		mv.setViewName("updateorder");
-		System.out.println("**came for update " + userid);
 		Order order = orderService.getByOrderId(id);
 		mv.addObject("user", userService.findById(userid));
 		mv.addObject("id", order.getOrderId());
@@ -103,17 +96,15 @@ public class OrderCrudController {
 	@PostMapping(path = "orders/{userid}/update/{id}")
 	public String updateAccountPost(@PathVariable(name = "userid") Integer userid, @ModelAttribute OrderDto orderDto,
 			@PathVariable(name = "id") Integer id) {
-		System.out.println(id);
-		System.out.println(orderDto.getOrderId() + "**");
 		orderService.updateOrder(id, DtoUtil.convertToOrder(orderDto));
-		return "redirect:../../../orders/{userid}";
+		return "redirect:../../../orders/{userid}?success=Order Updated successfully";
 	}
 
-	// add order..
+	
+	/************************************ADD ORDER ***********************************/
 	@GetMapping(path = "addorder/{id}")
 	public ModelAndView accountsGet(ModelAndView mv, @PathVariable(name = "id") Integer id) {
 		mv.setViewName("addorder");
-		System.out.println("**came for adding product.." + id);
 		mv.addObject("user", userService.findById(id));
 		mv.addObject("allproducts", productService.getAllProducts());
 		mv.addObject("orderDto", new OrderDetailDto());
@@ -122,12 +113,12 @@ public class OrderCrudController {
 
 	@PostMapping(path = "addorder/{id}")
 	public String accountsPost(@ModelAttribute OrderDetailDto orderDto, @PathVariable(name = "id") Integer id) {
-		System.out.println("**user wants to add product" + id);
 		orderService.addOrder(orderDto.getProducts(), id);
-		return "redirect:../orders/{id}";
+		return "redirect:../orders/{id}?success=Order Created Succesfully";
 	}
 
-	// view order detailss
+	
+	/*************************************VIEW ORDER BY ORDER ID*********************/
 	@GetMapping(path = "/orders/{userid}/view/{orderId}")
 	public ModelAndView viewOrderDetails(ModelAndView mv, @PathVariable(name = "orderId") Integer orderId,
 			@PathVariable(name = "userid") Integer userid) {
@@ -137,17 +128,4 @@ public class OrderCrudController {
 		return mv;
 	}
 
-	// search order by id
-	/*
-	 * @PostMapping(path = "/orders/{userid}/view") public ModelAndView
-	 * searchByOrderNumber(ModelAndView mv, @RequestParam(name = "searchId") Integer
-	 * orderid,
-	 * 
-	 * @PathVariable(name = "userid") Integer userid) { System.out.println(orderid);
-	 * System.out.println("**search by order number " + orderid);
-	 * mv.setViewName("vieworder"); Order order =
-	 * orderService.getByOrderId(orderid); System.out.println(order);
-	 * mv.addObject("user", userService.findById(userid)); mv.addObject("order",
-	 * order); return mv; }
-	 */
 }

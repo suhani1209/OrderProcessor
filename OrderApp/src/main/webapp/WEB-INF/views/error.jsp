@@ -42,7 +42,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h2>Oops, order not found !!</h2>
+                        <h2>Oops, page not found !!</h2>
                     </div>
                     <div class="col-12">
                         Please redirect to <a href="/home">Home</a> page
