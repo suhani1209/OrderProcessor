@@ -15,13 +15,14 @@
 	
 	<!------------ ERROR MESSAGE WHEN USER ENTERS WRONG LOGIN DETAILS ---------->
 	<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION }">
-	<font color="red">
-		<c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message }"></c:out>
-	</font>
+			<p class="wrongcredential" >${SPRING_SECURITY_LAST_EXCEPTION.message }</p>
 	</c:if> 
+	<c:remove var = "SPRING_SECURITY_LAST_EXCEPTION" scope = "session" />
+	
 	
 	<!---------------LOGIN FORM WITH USER AVATAR  ------------------------------>
 	<div class="wrapper fadeInDown">
+		
 	  	<div id="formContent">
 		    <!-- Tabs Titles -->
 		    <h2 class="active"> Sign In </h2>
@@ -41,7 +42,6 @@
 	  </div>
 	</div>
 	
-
 
 </body>
 </html>

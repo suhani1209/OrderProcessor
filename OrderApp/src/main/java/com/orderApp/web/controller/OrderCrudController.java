@@ -3,6 +3,8 @@ package com.orderApp.web.controller;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,17 +37,21 @@ public class OrderCrudController {
 		this.userService = userService;
 	}
 
-	/***************************HOME PAGE AUTHENTICATED USER WILL FIRST COME AT THIS PAGE*********************/
+	/**HOME PAGE AUTHENTICATED USER WILL FIRST COME AT THIS PAGE
+	 **/
 	@GetMapping(path = "/home")
-	public ModelAndView sayHome(Principal principal, ModelAndView mv) {
+	public ModelAndView sayHome(Principal principal, ModelAndView mv,HttpSession session) {
 		User user = userService.findByUsername(principal.getName());
+		/* session.setAttribute("user", user); */
 		mv.setViewName("home");
 		mv.addObject("products", productService.getAllProducts());
 		mv.addObject("user", user);
 		return mv;
 	}
 
-	/**********************VIEW ALL ORDERS OF A USER*********INPUT PARAMETERS : USER ID ******************/
+	/**VIEW ALL ORDERS OF A USER
+	 * INPUT PARAMETERS : USER ID
+	 **/
 	@GetMapping(path = "orders/{id}")
 	public ModelAndView getAllOrders(ModelAndView mv, @PathVariable(name = "id") Integer id) {
 		mv.setViewName("allorders");
@@ -56,8 +62,9 @@ public class OrderCrudController {
 	}
 
 	
-	/**************SEARCH ORDER BY ORDER ID*************
-	 *************INPUT PARAMETERS : USER ID, ORDER ID (FOR WHICH SEARCH HAS TO BE PERFORMED)**********/
+	/**SEARCH ORDER BY ORDER ID
+	 *INPUT PARAMETERS : USER ID, ORDER ID (FOR WHICH SEARCH HAS TO BE PERFORMED)
+	 ***/
 	@PostMapping(path = "orders/{userid}")
 	public ModelAndView getOrderById(ModelAndView mv,@RequestParam(name = "searchId") Integer orderid,@PathVariable(name = "userid") Integer userid ) {
 		mv.setViewName("allorders");
@@ -72,16 +79,19 @@ public class OrderCrudController {
 		return mv;
 	}
 
-	/*******************************DELETE ORDER**********
-	 *******************INPUT PARAMETERS : USER ID, ORDER ID********************/
+	/**DELETE ORDER
+	 *INPUT PARAMETERS : USER ID, ORDER ID
+	 **/
 	@GetMapping(path = "orders/{userid}/delete/{id}")
 	public String deleteOrder(@PathVariable(name = "userid") Integer userid,@PathVariable(name = "id") Integer orderId) {
 		orderService.deleteOrder(orderId);
 		return "redirect:../../../orders/{userid}?success=Order deleted successfully";
 	}
 
-	/*****************************UPDATE ORDER************
-	 ********************INPUT PARAMETERS USER ID, ORDER ID(ORDER TO BE UPDATED*****************/
+	
+	/**UPDATE ORDER
+	 *INPUT PARAMETERS USER ID, ORDER ID(ORDER TO BE UPDATED
+	 **/
 	@GetMapping(path = "orders/{userid}/update/{id}")
 	public ModelAndView updateOrder(@PathVariable(name = "userid") Integer userid, ModelAndView mv,@PathVariable(name = "id") Integer id) {
 		mv.setViewName("updateorder");
@@ -113,13 +123,26 @@ public class OrderCrudController {
 
 	@PostMapping(path = "addorder/{id}")
 	public String accountsPost(@ModelAttribute OrderDetailDto orderDto, @PathVariable(name = "id") Integer id) {
+		
+		/** Validation if user does not select any product then don't place an order 
+		 * instead REDIRECT TO ADD ORDER PAGE and display error message
+		 * */
+		if(orderDto.getProducts().size()<1)
+		{
+			return "redirect:../addorder/{id}?danger=Select at least one product to place order";
+		}
+		
+		/** ADD ORDER 
+		 *  redirect to all orders page with success message
+		 **/
 		orderService.addOrder(orderDto.getProducts(), id);
 		return "redirect:../orders/{id}?success=Order Created Succesfully";
 	}
 
 	
-	/************************VIEW ORDER BY ORDER ID**********
-	 *********************INPUT PARAMETER : USER ID, ORDER ID(WHOSE DETAILS ARE TO BE VIEWED*********/
+	/**VIEW ORDER BY ORDER ID
+	 *INPUT PARAMETER : USER ID, ORDER ID(WHOSE DETAILS ARE TO BE VIEWED)
+	 **/
 	@GetMapping(path = "/orders/{userid}/view/{orderId}")
 	public ModelAndView viewOrderDetails(ModelAndView mv, @PathVariable(name = "orderId") Integer orderId,
 			@PathVariable(name = "userid") Integer userid) {

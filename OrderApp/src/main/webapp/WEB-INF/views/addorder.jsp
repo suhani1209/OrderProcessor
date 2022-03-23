@@ -63,8 +63,22 @@
         </div>
         <!-- Page Header End -->
 
-		
-			
+		<!---------------- DISMISSIBLE ALERTS  ------------->
+		<%
+		if (request.getParameter("danger") != null) {
+		%>
+	
+		<div class="alert alert-danger alert-dismissible fade show"
+			role="alert" style="margin-top: 2rem;width: max-content; margin-inline: auto;">
+			<%=request.getParameter("danger")%>
+			<a type="button" class="message" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</a>
+		</div>
+		<%
+		}
+		%>
 		
 		<form:form action="../addorder/${id}" method="post" modelAttribute="orderDto">
 		<table>
@@ -78,16 +92,20 @@
 						${product.productName}
 						${product.productCategory} --%>
 						<tr>
-							<td><div class="checkbox-style"><form:checkbox path="products" value="${product}"/></div></td>
+							<td><div class="checkbox-style"><form:checkbox class="input-checkbox" path="products" value="${product}" /></div></td>
 							<td>${product.productName}</td>
 							<td>${product.productCategory}</td>
 						</tr>
 					
 				</c:forEach> 
 			</table>
-			<input type ="submit" class="button" value="Place Order"/>
+			
+			
+			<input type ="submit" class="button" value="Place Order"/> 
 			</form:form>
 			
 		<%@include file="footer.jsp" %>
+		
+		
 </body>
 </html>

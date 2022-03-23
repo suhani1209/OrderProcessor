@@ -17,7 +17,7 @@
         
         <style type="text/css">
         	<%@include file="../../css/style.css" %>
-        	<%@include file="../../css/view.css" %>
+        	<%@include file="../../css/update.css" %>
         </style>
         
 
@@ -71,24 +71,25 @@
 	<div class="section-header text-center">
 			<h2>You ordered : </h2>
 	</div>
-	<table>
-		<thead>
-		<tr>
-			<th>Product id</th>
-			<th>Product category</th>
-			<th>Product name</th>
-			</tr>
-		</thead>
-		<c:forEach items="${order.products}" var="product">
-		<tr>
-			<td>${product.productId}</td>
-			<td>${product.productCategory}</td>
-			<td>${product.productName}</td>
-		</tr>
-		<br>
-	</c:forEach>
 	
-	</table>
+	<!------------ PRODUCTS ORDERED ------------>
+	<div class="food">
+            <div class="container">
+                <div class="row align-items-center">
+                <c:forEach items="${order.products}" var="product">
+                    <div class="col-md-3">
+                        <div class="food-item">
+                            <h2>${product.productName}</h2>
+                            <p>
+                               ${product.productCategory}
+                            </p>
+            
+                        </div>
+                    </div>
+                </c:forEach>
+                </div>
+            </div>
+        </div>
 	
 	<!------------------INCLUDE FOOTER JSP --------------->
 	<%@include file="footer.jsp" %>

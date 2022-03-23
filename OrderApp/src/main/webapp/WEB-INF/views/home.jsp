@@ -9,6 +9,7 @@
 	<title>Home</title>
 </head>
 <body>
+	
 	<!---------------INCLUDE NAVBAR AND HEADER CONTAINING CAROUSEL ------------>
 	 <%@include file="navbar.jsp" %>
 	 <%@include file="header.jsp" %>

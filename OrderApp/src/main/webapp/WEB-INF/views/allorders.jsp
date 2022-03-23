@@ -24,12 +24,12 @@
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-	
 
 	<style type="text/css">
 		<%@include file ="../../css/style.css" %> 
 		<%@include file="../../css/allorders.css" %>
 	</style>
+	
 </head>
 <body>
 	<!-- Nav Bar Start -->
@@ -77,7 +77,7 @@
 	</div>
 	<!-- Page Header End -->
 
-	<!----------- SEARCH BY ORDER ID FORM  ------------>
+	<!----------- SEARCH BY ORDER ID FORM  ----SEARCH BAR------------>
 	<form action="/orders/${user.id}" method="post">
 		<input type="text" name="searchId" id="searchId"
 			placeholder="Enter order id" /> <input type="submit" class="button"
@@ -175,6 +175,7 @@
 					</c:if>
 				</c:forEach>
 			</table>
+			
 			
 			<!------------- INCLUDE FOOTER JSP PAGE  ---------->
 			<%@include file="footer.jsp"%>

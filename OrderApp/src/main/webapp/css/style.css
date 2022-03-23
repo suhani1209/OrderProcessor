@@ -572,13 +572,14 @@ a:focus {
 }
 
 .food .food-item i {
+	color: #fbaf32;
     position: relative;
     display: inline-block;
-    color: #fbaf32;
-    font-size: 60px;
-    line-height: 60px;
+    margin-right:40px;
+    font-size: 20px;
+    line-height: 20px;
     margin-bottom: 20px;
-    transition: .3s;
+    transition: .3s; 
 }
 
 .food .food-item:hover i {
@@ -592,17 +593,17 @@ a:focus {
     height: calc(100% + 20px);
     top: -20px;
     left: -15px;
-    border: 3px dotted #fbaf32;
-    border-right: transparent;
+    /* border: 3px dotted #fbaf32; */
+  /*   border-right: transparent;
     border-bottom: transparent;
-    border-radius: 100px;
+    border-radius: 100px;  */
     transition: .3s;
 }
 
 .food .food-item:hover i::after {
-    border: 3px dotted #719a0a;
-    border-right: transparent;
-    border-bottom: transparent;
+    border: /* 3px dotted */ #719a0a;
+   /*  border-right: transparent;
+    border-bottom: transparent; */
 }
 
 .food .food-item h2 {
@@ -613,6 +614,7 @@ a:focus {
 .food .food-item a {
     position: relative;
     font-size: 16px;
+    text-decoration:none;
 }
 
 .food .food-item a::after {
