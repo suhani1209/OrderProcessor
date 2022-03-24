@@ -80,6 +80,12 @@ public class OrderServiceImpl implements OrderService{
 		}
 		return orderDao.findAll();
 	}
+
+	// searching order given user id(id of user associated with the given order), orderid
+	@Override
+	public Order getOrderByUserId(Integer userid, Integer orderid) {
+		return orderDao.getOrderByUserId(userid, orderid);
+	}
 	
 
 }

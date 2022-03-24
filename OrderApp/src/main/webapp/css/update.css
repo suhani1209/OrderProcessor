@@ -28,7 +28,10 @@ th, td {
 	text-align: left;
 	padding: 8px;
 }
-
+.checkbox-style {
+	margin-left: 130px;
+	margin-right: -2px;
+}
 th {
 	background-color: #f2f2f2;
 }

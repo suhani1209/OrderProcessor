@@ -10,7 +10,6 @@ public class UserNotFoundException extends RuntimeException{
 	//USER NOT FOUND EXCEPTION
 	public UserNotFoundException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
 	}
 
 }

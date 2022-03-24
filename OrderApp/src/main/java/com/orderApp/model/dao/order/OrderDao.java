@@ -19,6 +19,7 @@ public interface OrderDao extends JpaRepository<Order, Integer>{
 			  nativeQuery = true)
 	public List<Order> getOrderByUser(Integer id);
 	
+	
 	/*
 	 * Update status of product from new to in processing if order is placed 24 hours ago 
 	 */
@@ -28,11 +29,19 @@ public interface OrderDao extends JpaRepository<Order, Integer>{
 			  nativeQuery = true)
 	public void updateStatus();
 	
+	
 	/*
 	 * Getting all the orders associated with a particular user and which are not deleted
 	 */
 	@Query(value="select * from order_table where status<> 'DELETED' and order_id=?1", 
 			  nativeQuery = true)
 	public List<Order> findAll(Integer id);
+	
+	/*
+	 * Finding a particular order associated with particular user
+	 * @param userid, orderid
+	 */
+	@Query(value="select * from order_table where user_id=?1 and order_id=?2",nativeQuery = true)
+	public Order getOrderByUserId(Integer userid,Integer orderid);
 	
 }

@@ -44,4 +44,11 @@ public interface OrderService {
 	 * INPUT PARAMETER : USER ID
 	 * **/
 	public List<Order> getOrderByUser(Integer userId);
+	
+	/**
+	 * Finding a particular order associated with particular user
+	 * @param userid, orderid
+	 */
+	@Query(value="select * from order_table where user_id=?1 and order_id=?2",nativeQuery = true)
+	public Order getOrderByUserId(Integer userid,Integer orderid);
 }

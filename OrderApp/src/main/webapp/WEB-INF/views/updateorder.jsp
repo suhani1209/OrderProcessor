@@ -85,10 +85,10 @@
 				<c:choose>
 				<c:when test="${contains } == 'true'">
 						print(product.productName)
-						<form:checkbox path="products" value="${ product}" checked="checked"/>
+					<div class="checkbox-style"><form:checkbox path="products" value="${ product}" checked="checked"/></div>
 				</c:when>
 				<c:otherwise>
-					<form:checkbox path="products" value="${ product}" />
+					<div class="checkbox-style"><form:checkbox path="products" value="${ product}" /></div>
 				</c:otherwise>
 				</c:choose>
 				</td>

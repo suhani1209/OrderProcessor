@@ -78,11 +78,13 @@
 	<!-- Page Header End -->
 
 	<!----------- SEARCH BY ORDER ID FORM  ----SEARCH BAR------------>
-	<form action="/orders/${user.id}" method="post">
+	<%-- <form action="/orders/${user.id}" method="post">
 		<input type="text" name="searchId" id="searchId"
 			placeholder="Enter order id" /> <input type="submit" class="button"
 			value="Search" /> <input type="reset" class="button" value="Reset" />
-	</form>
+	</form> --%>
+	
+	<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Order ID" title="Type in a name"/>
 	
 	<!---------------- DISMISSIBLE ALERTS  ------------->
 	<%
@@ -107,9 +109,9 @@
 				<h2 style="margin-top: 30px">${message}</h2>
 			</div>
 		</c:when>
-
+		
 		<c:otherwise>
-			<table>
+			<table id="orderTable">
 				<thead>
 					<tr>
 						<th>Order Id</th>
@@ -186,5 +188,6 @@
 				crossorigin="anonymous"></script>
 			<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="../../js/search.js"></script>
 </body>
 </html>

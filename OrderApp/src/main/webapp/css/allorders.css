@@ -61,3 +61,8 @@ button:hover {
 .alert alert-success alert-dismissible fade show {
 margin-right: 350px;
 }
+#myInput{
+	margin-left: 25%;
+    width: 55%;
+    padding: 20px;
+}

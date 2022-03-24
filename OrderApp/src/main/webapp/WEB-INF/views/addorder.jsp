@@ -35,8 +35,6 @@
                         <a href="/home" class="nav-item nav-link">Home</a>
                         <a href="/addorder/${user.id}" class="nav-item nav-link">Shop</a>
                         <a href="/orders/${user.id }" class="nav-item nav-link">My Orders</a>
-                        <%-- <a href="/orders/${user.id }" class="nav-item nav-link">Update Orders</a>
-                        <a href="/orders/${user.id }" class="nav-item nav-link">Delete</a> --%>
                         <div class="nav-item dropdown">
                             <a href="/home" class="nav-link dropdown-toggle" data-toggle="dropdown">Hi, ${user.username}</a>
                             <div class="dropdown-menu">
