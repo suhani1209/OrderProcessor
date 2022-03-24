@@ -27,6 +27,7 @@ table {
 th, td {
 	text-align: left;
 	padding: 8px;
+	line-height: 50px;
 }
 .checkbox-style {
 	margin-left: 130px;

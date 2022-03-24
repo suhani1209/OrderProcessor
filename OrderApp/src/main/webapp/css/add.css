@@ -19,6 +19,7 @@ table {
 th, td {
 	text-align: left;
 	padding: 8px;
+	line-height: 45px;
 }
 
 th {

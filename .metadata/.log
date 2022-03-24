@@ -9177,3 +9177,6 @@ Caused by: java.lang.NullPointerException: Cannot invoke "java.util.concurrent.C
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-03-24 12:19:40.443
 !MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.NZBTqtHP => OK
+
+!ENTRY org.eclipse.lsp4e 1 0 2022-03-24 14:31:15.849
+!MESSAGE [Info]	ESLint server running in node v16.13.0
