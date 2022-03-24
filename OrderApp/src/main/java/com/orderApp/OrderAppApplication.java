@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@EnableScheduling   /********ENABLE SUPPORT FOR SCHEDULING TASKS*****************************/
+@EnableScheduling   //ENABLE SUPPORT FOR SCHEDULING TASKS
 public class OrderAppApplication{
 
 	

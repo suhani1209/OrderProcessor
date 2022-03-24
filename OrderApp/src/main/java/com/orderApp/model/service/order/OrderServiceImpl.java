@@ -26,21 +26,21 @@ public class OrderServiceImpl implements OrderService{
 		this.orderDao=orderDao;
 	}
 	
-	/*********************GETTING ALL THE ORDERS ***********************************************/
+	//GETTING ALL THE ORDERS 
 	@Override
 	public List<Order> getAllOrders() {
 		
 		return orderDao.findAll();
 	}
 
-	/**********************GETTING ORDER BY ORDER ID*********************************************/
+	//GETTING ORDER BY ORDER ID
 	@Override
 	public Order getByOrderId(Integer orderId) {
 		
 		return orderDao.findById(orderId).orElseThrow(() -> new OrderNotFoundException("Order with the entered order id: " + orderId + " is not found"));
 	}
 	
-	/***********************ADDING NEW ORDER USER ENTERS LIST OF PRODUCTS TO BE ADDED ************/
+	//ADDING NEW ORDER USER ENTERS LIST OF PRODUCTS TO BE ADDED 
 	@Override
 	public void addOrder(List<Product> products,Integer id) {
 		Order order=new Order(products);
@@ -48,7 +48,7 @@ public class OrderServiceImpl implements OrderService{
 		orderDao.save(order);
 	}
 
-	/***********************UPDATING ORDER DETAILS ********************************************/
+	//UPDATING ORDER DETAILS 
 	@Override
 	public Order updateOrder(Integer orderId, Order order) {
 		Order orderToUpdate = orderDao.getById(orderId);
@@ -57,7 +57,7 @@ public class OrderServiceImpl implements OrderService{
 		return orderToUpdate;
 	}
 
-	/***************SOFT DELETE OF ORDER (CHANGING STATUS TO DELETED)***************************/
+	//SOFT DELETE OF ORDER (CHANGING STATUS TO DELETED)
 	@Override
 	public Order deleteOrder(Integer orderId) {
 		Order orderToDelete=orderDao.getById(orderId);
@@ -66,13 +66,13 @@ public class OrderServiceImpl implements OrderService{
 		return orderToDelete;
 	}
 	
-	/**********************GETTING ALL ORDERS OF A PARTICULAR USER WITH GIVEN USER ID************/
+	//GETTING ALL ORDERS OF A PARTICULAR USER WITH GIVEN USER ID
 	@Override
 	public List<Order> getOrderByUser(Integer userId) {
 		return orderDao.getOrderByUser(userId);
 	}
 	
-	/******************************SEARCHING ORDER BY ORDER ID*************************************/
+	//SEARCHING ORDER BY ORDER ID
 	@Override
 	public List<Order> findAll(Integer id) {
 		if(id!=null) {

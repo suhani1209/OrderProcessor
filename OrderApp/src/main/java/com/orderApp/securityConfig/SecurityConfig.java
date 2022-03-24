@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		auth.userDetailsService(userDetailService);
 	}
 	
-	/************************************************LOGIN AND LOGOUT USING SPRING SECURITY************************/
+	//LOGIN AND LOGOUT USING SPRING SECURITY
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 	}
 
-	/********************************FOR ENCODING PASSWORDS *******************************************************/
+	//FOR ENCODING PASSWORDS 
 	@Bean
 	public PasswordEncoder getPasswordEncoder() {
 		return new BCryptPasswordEncoder();

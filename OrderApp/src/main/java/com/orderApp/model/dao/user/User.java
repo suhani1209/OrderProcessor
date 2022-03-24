@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="user_table")
 public class User {
-	/**********AUTO GENERATED USER ID********************/
+	//AUTO GENERATED USER ID
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
@@ -24,7 +24,7 @@ public class User {
 	private String shippingAddress;
 	private String phoneNumber;
 	
-	/************CONSTRUCTOR FOR CREATING USER*************************/
+	//CONSTRUCTOR FOR CREATING USER
 	public User(String username, String password, String email, String shippingAddress, String phoneNumber) {
 		super();
 		this.username = username;

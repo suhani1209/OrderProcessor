@@ -1,5 +1,0 @@
-package com.orderApp.model.dao.order;
-
-public class Order {
-
-}

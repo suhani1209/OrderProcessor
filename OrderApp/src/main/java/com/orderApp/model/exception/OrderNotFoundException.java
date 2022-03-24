@@ -7,7 +7,7 @@ public class OrderNotFoundException extends RuntimeException{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/**************ORDER NOT FOUND EXCEPTION*********************************/
+	//ORDER NOT FOUND EXCEPTION
 	public OrderNotFoundException(String message) {
 		super(message);
 	}

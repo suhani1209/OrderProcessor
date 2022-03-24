@@ -15,7 +15,7 @@ public class ExceptionHandlerController {
 	
 	private final Logger logger = LoggerFactory.getLogger(ExceptionHandlerController.class);
 	
-	/****************EXCEPTION HANDLER IN CASE ANY EXCEPTION OCCURS USER WILL SEE THE ERROR PAGE************************/
+	//EXCEPTION HANDLER IN CASE ANY EXCEPTION OCCURS USER WILL SEE THE ERROR PAGE
 	@ExceptionHandler(value = OrderNotFoundException.class)
 	public ModelAndView defaultErrorHandler(HttpServletRequest req, 
                Exception e) throws Exception {

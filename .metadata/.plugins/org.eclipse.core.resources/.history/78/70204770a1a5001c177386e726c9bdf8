@@ -1,5 +1,0 @@
-package com.orderApp.model.exception;
-
-public class OrderNotFound {
-
-}

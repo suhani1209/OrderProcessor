@@ -16,13 +16,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Table(name="product_table")
 public class Product {
-	/**************AUTO GENERATED PRODUCT ID**************************************/
+	//AUTO GENERATED PRODUCT ID
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer productId;
 	private String productName;
 	private String productCategory;
 	
-	/*************CONSTRUCTOR FOR CREATING PRODUCT********************************/
+	//CONSTRUCTOR FOR CREATING PRODUCT
 	public Product(String productName, String productCategory) {
 		super();
 		this.productName = productName;

@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 	
-	/********************************LOGIN ****************************/
+	//LOGIN 
 	@GetMapping(path = "/login")
 	public String login() {
 		return "login";
@@ -19,13 +19,13 @@ public class LoginController {
 		return "login";
 	}
 	
-	/********************************LOGOUT ***************************/
+	//LOGOUT 
 	@GetMapping(path="/logout")
 	public String logout() {
 	return "login";
 	}
 	
-	/*******************************ACCESS DENIED **********************/
+	//ACCESS DENIED 
 	@GetMapping(path = "accessdenied")
 	public ModelAndView accessdenied(Principal principal, ModelAndView mv) {
 		mv.addObject("username", principal.getName());

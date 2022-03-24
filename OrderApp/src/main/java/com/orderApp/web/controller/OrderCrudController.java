@@ -111,7 +111,7 @@ public class OrderCrudController {
 	}
 
 	
-	/************************************ADD ORDER ***********************************/
+	// ADD ORDER 
 	@GetMapping(path = "addorder/{id}")
 	public ModelAndView accountsGet(ModelAndView mv, @PathVariable(name = "id") Integer id) {
 		mv.setViewName("addorder");

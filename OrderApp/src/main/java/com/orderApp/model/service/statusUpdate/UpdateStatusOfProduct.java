@@ -16,9 +16,10 @@ public class UpdateStatusOfProduct {
 		this.orderDao=orderDao;
 	}
 	
-	/***********SCHEDULED JOB RUNS EVERY HOUR AND 
-	 *********UPDATING THE STATUS OF NEW ORDERS PLACED BEFORE 24 HOURS 
-	 ******@SCHEDULED : this annotation is used to configure and schedule task**********************************/
+	/**SCHEDULED JOB RUNS EVERY HOUR AND 
+	 * UPDATING THE STATUS OF NEW ORDERS PLACED BEFORE 24 HOURS 
+	 * @SCHEDULED : this annotation is used to configure and schedule task
+	 **/
 	@Scheduled(cron="0 0 0/1 * * *")
 	public void changeStatus()
 	{
