@@ -1,9 +1,0 @@
-package com.orderApp.model.dto;
-
-import java.util.List;
-
-import com.orderApp.model.dao.product.Product;
-
-public class OrderDto {
-	private List<Product> products;
-}

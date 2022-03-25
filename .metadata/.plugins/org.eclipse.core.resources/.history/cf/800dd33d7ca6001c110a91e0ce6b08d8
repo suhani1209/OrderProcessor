@@ -1,5 +1,0 @@
-package com.orderApp.securityConfig;
-
-public class MyUserDetailService {
-
-}

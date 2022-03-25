@@ -1,5 +1,0 @@
-package com.orderApp.model.dao.user;
-
-public interface UserDao {
-
-}
