@@ -28,7 +28,7 @@
                             <p>
                                ${product.productCategory}
                             </p>
-                            <a href="/addorder/${user.id}">Shop</a>
+                            <a href="/addorder">Shop</a>
                         </div>
                     </div>
                 </c:forEach>

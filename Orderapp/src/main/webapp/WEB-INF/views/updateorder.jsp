@@ -23,7 +23,8 @@
         </style>
 </head>
 <body>
-		<!-- Nav Bar Start -->
+	<%@include file="navbar.jsp" %>
+		<%-- <!-- Nav Bar Start -->
         <div class="navbar navbar-expand-lg bg-light navbar-light">
             <div class="container-fluid">
                 <a href="/home" class="navbar-brand">Order <span>Processor</span></a>
@@ -34,10 +35,8 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
                         <a href="/home" class="nav-item nav-link">Home</a>
-                        <a href="/addorder/${user.id}" class="nav-item nav-link">Shop</a>
-                        <a href="/orders/${user.id }" class="nav-item nav-link">My Orders</a>
-                       <%--  <a href="/orders/${user.id }" class="nav-item nav-link">Update Orders</a>
-                        <a href="/orders/${user.id }" class="nav-item nav-link">Delete</a> --%>
+                        <a href="/addorder" class="nav-item nav-link">Shop</a>
+                        <a href="/orders" class="nav-item nav-link">My Orders</a>
                        <div class="nav-item dropdown">
                             <a href="/home" class="nav-link dropdown-toggle" data-toggle="dropdown">Hi, ${user.username}</a>
                             <div class="dropdown-menu">
@@ -48,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <!-- Nav Bar End -->
+        <!-- Nav Bar End --> --%>
         
         <!-- Page Header Start -->
         <div class="page-header">
@@ -66,9 +65,8 @@
             </div>
         </div>
         <!-- Page Header End -->
-
 	<!---------------------------FORM SHOWING PREFILLED DETAILS OF ORDER ------------------->
-	<form:form action="/orders/${user.id}/update/${id}" method="post" modelAttribute="orderDto">
+	<form:form action="update/${orderDto.orderId}" method="post" modelAttribute="orderDto">
 		<table>
 		<div class="section-header text-center">
 			<h2>Our Featured products</h2>

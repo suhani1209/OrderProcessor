@@ -17,8 +17,7 @@ public class ExceptionHandlerController {
 	
 	//EXCEPTION HANDLER IN CASE ANY EXCEPTION OCCURS USER WILL SEE THE ERROR PAGE
 	@ExceptionHandler(value = OrderNotFoundException.class)
-	public ModelAndView defaultErrorHandler(HttpServletRequest req, 
-               Exception e) throws OrderNotFoundException {
+	public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) {
 		
 		logger.error("[URL] : {}", req.getRequestURL(), e); 
 		ModelAndView mav = new ModelAndView();
@@ -29,8 +28,7 @@ public class ExceptionHandlerController {
 	}
 	
 	@ExceptionHandler(value = Exception.class)
-	public ModelAndView handleAllException(HttpServletRequest req, 
-               Exception e) throws Exception {
+	public ModelAndView handleAllException(HttpServletRequest req,  Exception e) {
 		
 		logger.error("[URL] : {}", req.getRequestURL(), e); 
 		ModelAndView mav = new ModelAndView();

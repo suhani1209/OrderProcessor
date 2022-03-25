@@ -22,7 +22,8 @@
         </style>
 </head>
 <body>
-		<!-- Nav Bar Start -->
+	<%@include file="navbar.jsp" %>
+		<%-- <!-- Nav Bar Start -->
         <div class="navbar navbar-expand-lg bg-light navbar-light">
             <div class="container-fluid">
                 <a href="/home" class="navbar-brand">Order <span>Processor</span></a>
@@ -45,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <!-- Nav Bar End -->
+        <!-- Nav Bar End --> --%>
         <!-- Page Header Start -->
         <div class="page-header">
             <div class="container">

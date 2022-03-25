@@ -41,7 +41,7 @@ public interface OrderDao extends JpaRepository<Order, Integer>{
 	 * Finding a particular order associated with particular user
 	 * @param userid, orderid
 	 */
-	@Query(value="select * from order_table where user_id=?1 and order_id=?2",nativeQuery = true)
+	@Query(value="select * from order_table where user_id=?1 and order_id=?2 and status<> 'DELETED'",nativeQuery = true)
 	public Order getOrderByUserId(Integer userid,Integer orderid);
 	
 }

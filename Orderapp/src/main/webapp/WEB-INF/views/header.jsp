@@ -31,8 +31,8 @@
                                 Special savings on weekends
                             </p>
                             <div class="carousel-btn">
-                                <a class="btn custom-btn" href="/orders/${user.id }" >My Orders</a>
-                                <a class="btn custom-btn" href="/addorder/${user.id}">Place Order</a>
+                                <a class="btn custom-btn" href="/orders" >My Orders</a>
+                                <a class="btn custom-btn" href="/addorder">Place Order</a>
                             </div>
                         </div>
                     </div>

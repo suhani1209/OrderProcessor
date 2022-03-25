@@ -32,6 +32,7 @@
 	
 </head>
 <body>
+	
 	<!-- Nav Bar Start -->
 	<div class="navbar navbar-expand-lg bg-light navbar-light">
 		<div class="container-fluid">
@@ -44,11 +45,9 @@
 			<div class="collapse navbar-collapse justify-content-between"
 				id="navbarCollapse">
 				<div class="navbar-nav ml-auto">
-					<a href="/home" class="nav-item nav-link">Home</a> <a
-						href="/addorder/${user.id}" class="nav-item nav-link">Shop</a> <a
-						href="/orders/${user.id}" class="nav-item nav-link">My Orders</a>
-					<%-- <a href="/orders/${user.id}" class="nav-item nav-link">Update Orders</a>
-                        <a href="/orders/${user.id}" class="nav-item nav-link">Delete</a> --%>
+					<a href="/home" class="nav-item nav-link">Home</a>
+					<a href="/addorder" class="nav-item nav-link">Shop</a>
+					<a href="/orders" class="nav-item nav-link">My Orders</a>
 					<div class="nav-item dropdown">
 						<a href="/home" class="nav-link dropdown-toggle"
 							data-toggle="dropdown">Hi, ${user.username}</a>
@@ -60,7 +59,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- Nav Bar End -->
+	<!--  Nav Bar End -->
 
 	<!-- Page Header Start -->
 	<div class="page-header">
@@ -136,7 +135,7 @@
 							<td>${order.getDate()}</td>
 							<td>${order.getTime()}</td>
 							<td><a
-								href="/orders/${order.user.id}/update/${order.orderId}"><i
+								href="update?orderid=${order.orderId}"><i
 									class="fas fa-edit"></i></a></td>
 
 
@@ -151,7 +150,7 @@
 												data-bs-dismiss="modal"></button>
 										</div>
 										<div class="modal-body">
-											<form action="/orders/${user.id}/delete/${order.orderId}">
+											<form action="delete/${order.orderId}">
 												<div class="mb-3">
 													<p>Are you sure you want to delete this order?</p>
 													<p class="text-danger">
@@ -163,14 +162,13 @@
 													<button type="button" class="btn btn-secondary"
 														data-bs-dismiss="modal" aria-hidden="true"
 														onclick="document.getElementById('myModal').style.display='none'">Cancel</button>
-
 												</div>
 											</form>
 										</div>
-
 									</div>
 								</div>
-							<td><a href="/orders/${order.user.id}/view/${order.orderId}">Details</a></td>
+						
+							<td><a href="view?orderid=${order.orderId}">Details</a></td>
 							<td>${order.user.shippingAddress}</td>
 							<td>${order.user.phoneNumber}</td>
 						</tr>

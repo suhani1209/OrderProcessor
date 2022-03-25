@@ -1,4 +1,4 @@
-package com.orderapp.model.service.statusUpdate;
+package com.orderapp.model.service.statusupdate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;

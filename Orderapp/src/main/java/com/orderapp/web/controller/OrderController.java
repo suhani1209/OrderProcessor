@@ -1,7 +1,6 @@
 package com.orderapp.web.controller;
 
 import java.security.Principal;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -42,113 +41,93 @@ public class OrderController {
 	@GetMapping(path = "/home")
 	public ModelAndView sayHome(Principal principal, ModelAndView mv,HttpSession session) {
 		User user = userService.findByUsername(principal.getName());
+		session.setAttribute("user", user);
 		mv.setViewName("home");
 		mv.addObject("products", productService.getAllProducts());
-		mv.addObject("user", user);
 		return mv;
 	}
 
 	/**VIEW ALL ORDERS OF A USER
 	 * INPUT PARAMETERS : USER ID
 	 **/
-	@GetMapping(path = "orders/{id}")
-	public ModelAndView getAllOrders(ModelAndView mv, @PathVariable(name = "id") Integer id) {
+	
+	@GetMapping(path="orders")
+	public ModelAndView getAllOrder(ModelAndView mv,HttpSession session)
+	{
 		mv.setViewName("allorders");
-		List<Order> orders = orderService.getOrderByUser(id);
-		mv.addObject("user", userService.findById(id));
-		mv.addObject("orders", orders);
+		User userid=(User)session.getAttribute("user");
+		mv.addObject("orders",orderService.getOrderByUser(userid.getId()));
 		return mv;
 	}
 
-	
-	/**SEARCH ORDER BY ORDER ID
-	 *INPUT PARAMETERS : USER ID, ORDER ID (FOR WHICH SEARCH HAS TO BE PERFORMED)
-	 ***/
-	@PostMapping(path = "orders/{userid}")
-	public ModelAndView getOrderById(ModelAndView mv,@RequestParam(name = "searchId") Integer orderid,@PathVariable(name = "userid") Integer userid ) {
-		mv.setViewName("allorders");
-		List<Order> orders = orderService.findAll(orderid);
-		mv.addObject("user", userService.findById(userid));
-		if(orders.isEmpty())
-		{
-			mv.addObject("message", "Order with id : "+orderid+" does not exist");
-			return mv;
-		}
-		mv.addObject("orders", orders);
-		return mv;
-	}
 
 	/**DELETE ORDER
 	 *INPUT PARAMETERS : USER ID, ORDER ID
 	 **/
-	@GetMapping(path = "orders/{userid}/delete/{id}")
-	public String deleteOrder(@PathVariable(name = "userid") Integer userid,@PathVariable(name = "id") Integer orderId) {
+	@GetMapping(path="delete/{orderid}")
+	public String deleteOrder(@PathVariable(name="orderid") Integer orderId)
+	{
 		orderService.deleteOrder(orderId);
-		return "redirect:../../../orders/{userid}?success=Order deleted successfully";
+		return "redirect:/orders?success=Order deleted successfully";
 	}
 
 	
 	/**UPDATE ORDER
 	 *INPUT PARAMETERS USER ID, ORDER ID(ORDER TO BE UPDATED
 	 **/
-	@GetMapping(path = "orders/{userid}/update/{id}")
-	public ModelAndView updateOrder(@PathVariable(name = "userid") Integer userid, ModelAndView mv,@PathVariable(name = "id") Integer id) {
+	
+	@GetMapping(path = "update")
+	public ModelAndView updateOrder(ModelAndView mv,@RequestParam(name = "orderid") Integer orderid) {
 		mv.setViewName("updateorder");
-		Order order = orderService.getByOrderId(id);
-		mv.addObject("user", userService.findById(userid));
-		mv.addObject("id", order.getOrderId());
+		Order order = orderService.getByOrderId(orderid);
 		mv.addObject("orderDto", DtoUtil.convertToOrderDto(order));
 		mv.addObject("products", productService.getAllProducts());
 		return mv;
 	}
-
-	@PostMapping(path = "orders/{userid}/update/{id}")
-	public String updateAccountPost(@PathVariable(name = "userid") Integer userid, @ModelAttribute OrderDto orderDto,
-			@PathVariable(name = "id") Integer id) {
-		orderService.updateOrder(id, DtoUtil.convertToOrder(orderDto));
-		return "redirect:../../../orders/{userid}?success=Order Updated successfully";
+	@PostMapping(path = "update/{orderid}")
+	public String updateAccountPost(@ModelAttribute OrderDto orderDto,@PathVariable(name = "orderid") Integer orderid) {
+		orderService.updateOrder(orderid, DtoUtil.convertToOrder(orderDto));
+		return "redirect:/orders?success=Order Updated successfully";
 	}
 
 	
 	// ADD ORDER 
-	@GetMapping(path = "addorder/{id}")
-	public ModelAndView accountsGet(ModelAndView mv, @PathVariable(name = "id") Integer id) {
+	@GetMapping(path = "addorder")
+	public ModelAndView accountsGet(ModelAndView mv) {
 		mv.setViewName("addorder");
-		mv.addObject("user", userService.findById(id));
 		mv.addObject("allproducts", productService.getAllProducts());
 		mv.addObject("orderDto", new OrderDetailDto());
 		return mv;
 	}
 
-	@PostMapping(path = "addorder/{id}")
-	public String accountsPost(@ModelAttribute OrderDetailDto orderDto, @PathVariable(name = "id") Integer id) {
-		
+	@PostMapping(path = "addorder")
+	public String accountsPost(@ModelAttribute OrderDetailDto orderDto,HttpSession session) {
+		User user=(User)session.getAttribute("user");
 		/** Validation if user does not select any product then don't place an order 
 		 * instead REDIRECT TO ADD ORDER PAGE and display error message
 		 * */
 		if(orderDto.getProducts().isEmpty())
 		{
-			return "redirect:../addorder/{id}?danger=Select at least one product to place order";
+			return "redirect:../addorder?danger=Select at least one product to place order";
 		}
 		
 		/** ADD ORDER 
 		 *  redirect to all orders page with success message
 		 **/
-		orderService.addOrder(orderDto.getProducts(), id);
-		return "redirect:../orders/{id}?success=Order Created Succesfully";
+		orderService.addOrder(orderDto.getProducts(), user.getId());
+		return "redirect:../orders?success=Order Created Succesfully";
 	}
 
 	
 	/**VIEW ORDER BY ORDER ID
 	 *INPUT PARAMETER : USER ID, ORDER ID(WHOSE DETAILS ARE TO BE VIEWED)
 	 **/
-	@GetMapping(path = "/orders/{userid}/view/{orderId}")
-	public ModelAndView viewOrderDetails(ModelAndView mv, @PathVariable(name = "orderId") Integer orderId,
-			@PathVariable(name = "userid") Integer userid) {
+	
+	@GetMapping(path = "view")
+	public ModelAndView viewOrderDetails(ModelAndView mv, @RequestParam(name="orderid") Integer orderid,HttpSession session) {
 		mv.setViewName("vieworder");
-		mv.addObject("user", userService.findById(userid));
-		mv.addObject("order", orderService.getOrderByUserId(userid, orderId));
+		User user=(User)session.getAttribute("user");
+		mv.addObject("order", orderService.getOrderByUserId(user.getId(), orderid));
 		return mv;
 	}
-
 }

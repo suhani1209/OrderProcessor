@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-		<meta charset="ISO-8859-1">
+		<%-- <meta charset="ISO-8859-1">
 		<!-- Google Font -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet"> 
         
@@ -14,7 +14,7 @@
         
         <style type="text/css">
         	<%@include file="../../css/style.css" %>
-        </style>
+        </style> --%>
 </head>
 <body>
 		<!-- Nav Bar Start -->
@@ -28,10 +28,8 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
                         <a href="/home" class="nav-item nav-link">Home</a>
-                        <a href="/addorder/${user.id}" class="nav-item nav-link">Shop</a>
-                        <a href="/orders/${user.id }" class="nav-item nav-link">My Orders</a>
-                        <%-- <a href="/orders/${user.id }" class="nav-item nav-link">Update Orders</a>
-                        <a href="/orders/${user.id }" class="nav-item nav-link">Delete</a> --%>
+                        <a href="/addorder" class="nav-item nav-link">Shop</a>
+                        <a href="/orders" class="nav-item nav-link">My Orders</a>
                         <div class="nav-item dropdown">
                             <a href="/home" class="nav-link dropdown-toggle" data-toggle="dropdown">Hi, ${user.username}</a>
                             <div class="dropdown-menu">
