@@ -1,5 +1,0 @@
-package com.orderApp.web.controller;
-
-public class LogoutController {
-
-}

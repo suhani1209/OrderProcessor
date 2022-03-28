@@ -1,5 +1,0 @@
-package com.orderApp.model.service.statusUpdate;
-
-public class UpdateStatusOfProduct {
-
-}

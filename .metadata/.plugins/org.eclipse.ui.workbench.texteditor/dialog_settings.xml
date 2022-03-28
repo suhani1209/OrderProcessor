@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="user"/>
 		<list key="findhistory">
+			<item value="user"/>
+			<item value="userid"/>
 			<item value=".fa"/>
 			<item value="food"/>
 			<item value="i"/>
@@ -21,8 +23,6 @@
 			<item value="icon"/>
 			<item value="fourth"/>
 			<item value="foruth"/>
-			<item value="page"/>
-			<item value="fa"/>
 		</list>
 		<list key="replacehistory">
 		</list>

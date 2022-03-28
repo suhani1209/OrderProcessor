@@ -27,7 +27,7 @@ public class ExceptionHandlerController {
 		return mav;
 	}
 	
-	@ExceptionHandler(value = Exception.class)
+	@ExceptionHandler(value = { IllegalArgumentException.class, IllegalStateException.class,NullPointerException.class})
 	public ModelAndView handleAllException(HttpServletRequest req,  Exception e) {
 		
 		logger.error("[URL] : {}", req.getRequestURL(), e); 

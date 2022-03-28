@@ -32,6 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/home/**").authenticated()
 		.antMatchers("/orders/**").authenticated()
 		.antMatchers("/addorder/**").authenticated()
+		.antMatchers("/update/**").authenticated()
+		.antMatchers("/view/**").authenticated()
 		.and().formLogin()
 		.loginPage("/login").loginProcessingUrl("/login")
 		.usernameParameter("cName").passwordParameter("cPass")

@@ -20,7 +20,7 @@ public class UpdateStatusOfProduct {
 	 * UPDATING THE STATUS OF NEW ORDERS PLACED BEFORE 24 HOURS 
 	 * @SCHEDULED : this annotation is used to configure and schedule task
 	 **/
-	@Scheduled(cron="0 0 0/1 * * *")
+	@Scheduled(fixedRate = 60000)
 	public void changeStatus()
 	{
 		orderDao.updateStatus();
